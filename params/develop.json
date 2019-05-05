@@ -1,0 +1,46 @@
+[
+  {
+    "ParameterKey": "VpcId",
+    "ParameterValue": "vpc-05bfdcd468461a8d4"
+  },
+  {
+    "ParameterKey": "Subnets",
+    "ParameterValue": "subnet-0e369d2f347c281d3,subnet-03482c527c4d279b2"
+  },
+  {
+    "ParameterKey": "KeyName",
+    "ParameterValue": "devin_ec2"
+  },
+  {
+    "ParameterKey": "InstanceType",
+    "ParameterValue": "t2.small"
+  },
+  {
+    "ParameterKey": "DBClass",
+    "ParameterValue": "db.t2.small"
+  },
+  {
+    "ParameterKey": "DBName",
+    "ParameterValue": "devRdsMysql"
+  },
+  {
+    "ParameterKey": "MultiAZDatabase",
+    "ParameterValue": "false"
+  },
+  {
+    "ParameterKey": "DBSubnetGroup",
+    "ParameterValue": "devdbsubnetgroup"
+  },
+  {
+    "ParameterKey": "DBUser",
+    "ParameterValue": "ac3db"
+  },
+  {
+    "ParameterKey": "DBPassword",
+    "ParameterValue": "abcd1234"
+  },
+  {
+    "ParameterKey": "WebServerCapacity",
+    "ParameterValue": "1"
+  } 
+]
