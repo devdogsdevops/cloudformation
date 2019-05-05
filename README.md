@@ -1,5 +1,13 @@
-# cloudformation
+# WordPress Deployment on AWS
 
 
 
-## first commit
+## Getting Started 
+
+   - clone repository
+
+## Launch stacks
+
+### Deploy VPC, private subnets, public subnets, Internet and NAT Gateways
+
+
