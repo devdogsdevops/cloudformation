@@ -1,4 +1,4 @@
-# Guide on how to create/manage production cloudformation templates at scale
+# How to create/manage production cloudformation templates at scale
 
 [AWS Cloudformation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/GettingStarted.html)templates are an incredibly powerful way to build sets of resources in Amazon's AWS environment. Unfortunately, because they are specified in JSON, they are also difficult to write and maintain.
 
@@ -19,4 +19,4 @@ This guide with the aid of [cfndsl])(https://github.com/devdogsdevops/cfndsl) wi
      git clone https://github.com/devdogsdevops/cloudformation.git
    ```
 
-## Launch stacks
+##
