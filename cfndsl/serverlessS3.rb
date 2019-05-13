@@ -26,18 +26,7 @@ CloudFormation do
           Effect: 'Allow',
           Principal: '*',
           Action: 's3:GetObject',
-         "Resource": {
-             "Fn::Join": [
-                 "",
-                 [
-                     "arn:aws:s3:::",
-                     {
-                         "Ref": "S3Bucket"
-                     },
-                     "/*"
-                 ]
-             ]
-         }
+          Resource: { "Fn::Join": [ "",[ "arn:aws:s3:::", { "Ref": "S3Bucket" }, "/*" ] ] }
         }
       ]
     )
