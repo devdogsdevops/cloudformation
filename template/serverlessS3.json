@@ -3,9 +3,9 @@
   "Resources": {
     "s3bucket": {
       "Properties": {
-        "BucketName": "staticWebsite",
+        "BucketName": "devdogsdevops",
         "VersioningConfiguration": {
-          "Status": "Disabled"
+          "Status": "Suspended"
         },
         "WebsiteConfiguration": {
           "ErrorDocument": "error.html",
@@ -34,7 +34,7 @@
                   [
                     "arn:aws:s3:::",
                     {
-                      "Ref": "S3Bucket"
+                      "Ref": "s3bucket"
                     },
                     "/*"
                   ]
@@ -52,7 +52,7 @@
                   [
                     "arn:aws:s3:::",
                     {
-                      "Ref": "S3Bucket"
+                      "Ref": "s3bucket"
                     },
                     "/*"
                   ]

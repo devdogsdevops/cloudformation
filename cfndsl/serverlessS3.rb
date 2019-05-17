@@ -1,7 +1,7 @@
 CloudFormation do
   S3_Bucket('s3bucket') do
-    BucketName 'staticWebsite'
-    VersioningConfiguration(Status: 'Disabled')
+    BucketName 'devdogsdevops'
+    VersioningConfiguration(Status: 'Suspended')
     WebsiteConfiguration(
       ErrorDocument: 'error.html',
       IndexDocument: 'index.html'
@@ -18,14 +18,14 @@ CloudFormation do
           Effect: 'Allow',
           Principal: '*',
           Action: 's3:GetObject',
-          Resource: { "Fn::Join": [ "",[ "arn:aws:s3:::", { "Ref": "S3Bucket" }, "/*" ] ] }
+          Resource: { "Fn::Join": [ "",[ "arn:aws:s3:::", { "Ref": "s3bucket" }, "/*" ] ] }
         },
         {
           Sid: 'AllowUploadWebContent',
           Effect: 'Allow',
           Principal: 'arn:aws:iam::972539100667:user/devin',
           Action: 's3:PutObject',
-          Resource: { "Fn::Join": [ "",[ "arn:aws:s3:::", { "Ref": "S3Bucket" }, "/*" ] ] }
+          Resource: { "Fn::Join": [ "",[ "arn:aws:s3:::", { "Ref": "s3bucket" }, "/*" ] ] }
         }
       ]
     )

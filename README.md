@@ -29,3 +29,9 @@ This guide with the aid of [cfndsl])(https://github.com/devdogsdevops/cfndsl) wi
    ```bash
    cfndsl -o ../template/serverlessS3.json -p serverlessS3.rb
    ```
+
+   - Use aws cli and create-stack using json template generated:
+
+   ```bash
+   aws cloudformation create-stack --stack-name serverlessS3Bucket --template-body file://template/serverlessS3.json
+   ```
