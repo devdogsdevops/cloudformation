@@ -18,5 +18,20 @@ This guide with the aid of [cfndsl])(https://github.com/devdogsdevops/cfndsl) wi
    ```bash
      git clone https://github.com/devdogsdevops/cloudformation.git
    ```
+   - create cfndsl ruby file : eg serverlessS3.rb within the cfndsl folder.
 
-##
+   ```bash
+    vim serverlessS3.rb
+   ```
+
+   - Run the following command to generate JSON template from cfndsl .rb file.
+
+   ```bash
+   cfndsl -o ../template/serverlessS3.json -p serverlessS3.rb
+   ```
+
+   - Use aws cli and create-stack using json template generated:
+
+   ```bash
+   aws cloudformation create-stack --stack-name serverlessS3Bucket --template-body file://template/serverlessS3.json
+   ```

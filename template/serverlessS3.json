@@ -1,0 +1,87 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "s3bucket": {
+      "Properties": {
+        "BucketName": "devdogsdevops",
+        "VersioningConfiguration": {
+          "Status": "Suspended"
+        },
+        "WebsiteConfiguration": {
+          "ErrorDocument": "error.html",
+          "IndexDocument": "index.html"
+        }
+      },
+      "Type": "AWS::S3::Bucket"
+    },
+    "s3bucketPolicy": {
+      "Properties": {
+        "Bucket": {
+          "Ref": "s3bucket"
+        },
+        "PolicyDocument": {
+          "id": "MyPolicy",
+          "version": "2012-10-17",
+          "statement": [
+            {
+              "Sid": "PublicReadForGetBucketObjects",
+              "Effect": "Allow",
+              "Principal": "*",
+              "Action": "s3:GetObject",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:aws:s3:::",
+                    {
+                      "Ref": "s3bucket"
+                    },
+                    "/*"
+                  ]
+                ]
+              }
+            },
+            {
+              "Sid": "AllowUploadWebContent",
+              "Effect": "Allow",
+              "Principal": "arn:aws:iam::972539100667:user/devin",
+              "Action": "s3:PutObject",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:aws:s3:::",
+                    {
+                      "Ref": "s3bucket"
+                    },
+                    "/*"
+                  ]
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "Type": "AWS::S3::BucketPolicy"
+    }
+  },
+  "Outputs": {
+    "URL": {
+      "Description": "The URL of the website",
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "http://",
+            {
+              "Fn::GetAtt": [
+                "s3bucket",
+                "WebsiteURL"
+              ]
+            }
+          ]
+        ]
+      }
+    }
+  }
+}
