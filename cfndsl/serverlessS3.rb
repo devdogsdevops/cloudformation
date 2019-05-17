@@ -1,18 +1,10 @@
 CloudFormation do
   S3_Bucket('s3bucket') do
     BucketName 'staticWebsite'
-    VersioningConfiguration(Status: 'Enabled')
+    VersioningConfiguration(Status: 'Disabled')
     WebsiteConfiguration(
       ErrorDocument: 'error.html',
-      IndexDocument: 'index.html',
-      RoutingRules: [
-        {
-          RoutingRuleCondition: {
-            HttpErrorCodeReturnedEquals: '404',
-            KeyPrefixEquals: 'out1/'
-          }
-        }
-      ]
+      IndexDocument: 'index.html'
     )
   end
   BucketPolicy('s3bucketPolicy')do
@@ -26,6 +18,13 @@ CloudFormation do
           Effect: 'Allow',
           Principal: '*',
           Action: 's3:GetObject',
+          Resource: { "Fn::Join": [ "",[ "arn:aws:s3:::", { "Ref": "S3Bucket" }, "/*" ] ] }
+        },
+        {
+          Sid: 'AllowUploadWebContent',
+          Effect: 'Allow',
+          Principal: 'arn:aws:iam::972539100667:user/devin',
+          Action: 's3:PutObject',
           Resource: { "Fn::Join": [ "",[ "arn:aws:s3:::", { "Ref": "S3Bucket" }, "/*" ] ] }
         }
       ]
