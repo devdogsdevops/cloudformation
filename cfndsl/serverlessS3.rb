@@ -1,4 +1,5 @@
 CloudFormation do
+
   S3_Bucket('s3bucket') do
     BucketName 'devdogsdevops'
     VersioningConfiguration(Status: 'Suspended')
@@ -10,9 +11,7 @@ CloudFormation do
   BucketPolicy('s3bucketPolicy')do
     Bucket(Ref: 's3bucket')
     PolicyDocument(
-      id: 'MyPolicy',
-      version: '2012-10-17',
-      statement:[
+      Statement:[
         {
           Sid: 'PublicReadForGetBucketObjects',
           Effect: 'Allow',
@@ -21,9 +20,9 @@ CloudFormation do
           Resource: { "Fn::Join": [ "",[ "arn:aws:s3:::", { "Ref": "s3bucket" }, "/*" ] ] }
         },
         {
-          Sid: 'AllowUploadWebContent',
+          Sid: 'AllowUserDevinToUpload',
           Effect: 'Allow',
-          Principal: 'arn:aws:iam::972539100667:user/devin',
+          Principal: {'AWS': 'arn:aws:iam::972539100667:user/devin'},
           Action: 's3:PutObject',
           Resource: { "Fn::Join": [ "",[ "arn:aws:s3:::", { "Ref": "s3bucket" }, "/*" ] ] }
         }
